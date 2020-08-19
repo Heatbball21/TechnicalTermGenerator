@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 
 import Generator.Generator;
-import javafx.application.Application;
-import javafx.stage.Stage;
+//import javafx.application.Application;
+//import javafx.stage.Stage;
 
 public class Main {
 	
