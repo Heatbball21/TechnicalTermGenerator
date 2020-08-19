@@ -11,9 +11,9 @@ import javafx.stage.Stage;
 public class Main {
 	
 	
-	
+	//Vars
 	static Generator g = new Generator();
-	static FileWriter fw;// = new FileWriter("C:\\Users\\Jackson\\Desktop\\TTGOutput.txt");
+	static FileWriter fw;
 	static BufferedWriter b;
 	static File f;
 	static String userHome;
@@ -23,6 +23,7 @@ public class Main {
 		
 		
 		try {
+			//creates a file instance using the users Desktop
 			userHome = System.getProperty("user.home") + "\\Desktop";
 			System.out.println(userHome);
 			f = new File(userHome + "\\TTGOutput.txt");
@@ -31,10 +32,14 @@ public class Main {
 		}
 		
 		try {
+			//is there already a TTGOutput file on the Desktop?
+			
 			if(f.isFile()) {
+				//yes, create writers
 				fw = new FileWriter(userHome + "\\TTGOutput.txt");
 				b = new BufferedWriter(fw);
 			}else {
+				//no, create file and writers
 				f.createNewFile();
 				fw = new FileWriter(userHome + "\\TTGOutput.txt");
 				b = new BufferedWriter(fw);
@@ -43,7 +48,7 @@ public class Main {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		//loop through the generation of terms
 		for(int i = 0; i < 101; i++) {
 			try {
 				
