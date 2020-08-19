@@ -1,27 +1,45 @@
 package UI;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
 import Generator.Generator;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main {
 	
 	
 	
 	static Generator g = new Generator();
 	static FileWriter fw;// = new FileWriter("C:\\Users\\Jackson\\Desktop\\TTGOutput.txt");
 	static BufferedWriter b;
+	static File f;
+	static String userHome;
 	
 	public static void main(String[] args) {
-		
+		//launch(args);
 		
 		
 		try {
-			fw = new FileWriter("C:\\Users\\Jackson\\Desktop\\TTGOutput.txt");
-			b = new BufferedWriter(fw);
+			userHome = System.getProperty("user.home") + "\\Desktop";
+			System.out.println(userHome);
+			f = new File(userHome + "\\TTGOutput.txt");
+		}catch(Exception e) {
+			
+		}
+		
+		try {
+			if(f.isFile()) {
+				fw = new FileWriter(userHome + "\\TTGOutput.txt");
+				b = new BufferedWriter(fw);
+			}else {
+				f.createNewFile();
+				fw = new FileWriter(userHome + "\\TTGOutput.txt");
+				b = new BufferedWriter(fw);
+			}
+		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -46,14 +64,14 @@ public class Main extends Application{
 		}catch(Exception e) {
 			
 		}
-	launch(args);
+	
 
 	}
 
-	@Override
-	public void start(Stage arg0) throws Exception {
+	//@Override
+	//public void start(Stage arg0) throws Exception {
 		
 		
-	}
+	//}
 
 }
